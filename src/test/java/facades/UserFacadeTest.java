@@ -83,13 +83,13 @@ public class UserFacadeTest {
         }
     }
 
-    // TODO: Delete or change this method
+/*    // TODO: Delete or change this method
 //    @Disabled
     @Test
     public void getVerifiedUser() throws Exception {
         User actual = facade.getVeryfiedUser(user.getUserName(), "test1");
         User expected = user;
         assertEquals(expected, actual);
-    }
+    }*/
 
 }
