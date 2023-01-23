@@ -4,7 +4,7 @@ import entities.Role;
 import entities.User;
 import org.junit.jupiter.api.*;
 import utils.EMF_Creator;
-import entities.RenameMe;
+
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 
@@ -83,13 +83,13 @@ public class UserFacadeTest {
         }
     }
 
-/*    // TODO: Delete or change this method
+    // TODO: Delete or change this method
 //    @Disabled
     @Test
     public void getVerifiedUser() throws Exception {
         User actual = facade.getVeryfiedUser(user.getUserName(), "test1");
         User expected = user;
         assertEquals(expected, actual);
-    }*/
+    }
 
 }
