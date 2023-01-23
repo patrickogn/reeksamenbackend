@@ -3,11 +3,11 @@
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>dat.sem3</groupId>
-    <artifactId>24timers</artifactId>
+    <artifactId>reeksamen</artifactId>
     <version>1.0.1</version>
     <packaging>war</packaging>
 
-    <name>24timers</name>
+    <name>reeksamen</name>
 
     <properties>
         <endorsed.dir>${project.build.directory}/endorsed</endorsed.dir>
