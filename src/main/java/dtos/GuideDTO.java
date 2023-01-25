@@ -1,9 +1,12 @@
 package dtos;
 
 import entities.Guide;
+import entities.Trip;
 
 import javax.validation.constraints.Size;
 import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Objects;
 
 /**
@@ -38,6 +41,12 @@ public class GuideDTO implements Serializable {
         this.birthyear = guide.getBirthyear();
         this.profile = guide.getProfile();
         this.imageurl = guide.getImageurl();
+    }
+
+    public static List<GuideDTO> getDtos(List<Guide> rms) {
+        List<GuideDTO> rmdtos = new ArrayList();
+        rms.forEach(rm -> rmdtos.add(new GuideDTO(rm)));
+        return rmdtos;
     }
 
     public Integer getId() {
