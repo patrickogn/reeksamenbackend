@@ -6,6 +6,8 @@ import entities.Trip;
 
 import javax.validation.constraints.Size;
 import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Objects;
 import java.util.Set;
 
@@ -26,10 +28,11 @@ public class TripDTO implements Serializable {
     private final String duration;
     @Size(max = 45)
     private final String packinglist;
-    private final Set<GuideDTO> guides;
-    private final Set<BrugerDTO> brugers;
+ /*   private final Set<GuideDTO> guides;
+    private final Set<BrugerDTO> brugers;*/
 
-    public TripDTO(Integer id, String name, String date, String time, String location, String duration, String packinglist, Set<GuideDTO> guides, Set<BrugerDTO> brugers) {
+
+    public TripDTO(Integer id, String name, String date, String time, String location, String duration, String packinglist) {
         this.id = id;
         this.name = name;
         this.date = date;
@@ -37,9 +40,27 @@ public class TripDTO implements Serializable {
         this.location = location;
         this.duration = duration;
         this.packinglist = packinglist;
-        this.guides = guides;
-        this.brugers = brugers;
+/*        this.guides = guides;
+        this.brugers = brugers;*/
     }
+
+    public TripDTO(Trip rm) {
+        this.id = rm.getId();
+        this.name = rm.getName();
+        this.date = rm.getDate();
+        this.time = rm.getTime();
+        this.location = rm.getLocation();
+        this.duration = rm.getDuration();
+        this.packinglist = rm.getPackinglist();
+
+    }
+
+    public static List<TripDTO> getDtos(List<Trip> rms) {
+        List<TripDTO> rmdtos = new ArrayList();
+        rms.forEach(rm -> rmdtos.add(new TripDTO(rm)));
+        return rmdtos;
+    }
+
 
     public Integer getId() {
         return id;
@@ -69,13 +90,13 @@ public class TripDTO implements Serializable {
         return packinglist;
     }
 
-    public Set<GuideDTO> getGuides() {
+/*    public Set<GuideDTO> getGuides() {
         return guides;
     }
 
     public Set<BrugerDTO> getBrugers() {
         return brugers;
-    }
+    }*/
 
     @Override
     public boolean equals(Object o) {
@@ -88,29 +109,11 @@ public class TripDTO implements Serializable {
                 Objects.equals(this.time, entity.time) &&
                 Objects.equals(this.location, entity.location) &&
                 Objects.equals(this.duration, entity.duration) &&
-                Objects.equals(this.packinglist, entity.packinglist) &&
-                Objects.equals(this.guides, entity.guides) &&
-                Objects.equals(this.brugers, entity.brugers);
+                Objects.equals(this.packinglist, entity.packinglist);
+/*                Objects.equals(this.guides, entity.guides) &&
+                Objects.equals(this.brugers, entity.brugers);*/
     }
 
-    @Override
-    public int hashCode() {
-        return Objects.hash(id, name, date, time, location, duration, packinglist, guides, brugers);
-    }
-
-    @Override
-    public String toString() {
-        return getClass().getSimpleName() + "(" +
-                "id = " + id + ", " +
-                "name = " + name + ", " +
-                "date = " + date + ", " +
-                "time = " + time + ", " +
-                "location = " + location + ", " +
-                "duration = " + duration + ", " +
-                "packinglist = " + packinglist + ", " +
-                "guides = " + guides + ", " +
-                "brugers = " + brugers + ")";
-    }
 
     /**
      * A DTO for the {@link Guide} entity

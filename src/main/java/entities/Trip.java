@@ -37,6 +37,9 @@ public class Trip {
     @Column(name = "packinglist", length = 45)
     private String packinglist;
 
+    public Trip() {
+    }
+
     @ManyToMany
     @JoinTable(name = "trip_has_guide",
             joinColumns = @JoinColumn(name = "trip_idtrip"),
