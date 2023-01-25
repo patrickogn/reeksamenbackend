@@ -10,6 +10,7 @@ import utils.EMF_Creator;
 import javax.persistence.EntityManagerFactory;
 import javax.ws.rs.*;
 import javax.ws.rs.core.MediaType;
+import javax.ws.rs.core.Response;
 
 @Path("admin")
 public class AdminResource {
@@ -44,5 +45,15 @@ public class AdminResource {
         GuideDTO guideDTO = GSON.fromJson(input, GuideDTO.class);
         GuideDTO newGuide = FACADE.createGuide(guideDTO);
         return GSON.toJson(newGuide);
+    }
+
+    @DELETE
+    @Path("deletetrip/{id}")
+    @Produces({MediaType.APPLICATION_JSON})
+    @Consumes({MediaType.APPLICATION_JSON})
+    // @RolesAllowed("admin")
+    public Response deleteTrip(@PathParam("id") int id) {
+        FACADE.deleteTrip(id);
+        return Response.ok().entity(GSON.toJson(id)).build();
     }
 }

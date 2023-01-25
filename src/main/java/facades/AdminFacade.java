@@ -7,6 +7,7 @@ import entities.Trip;
 
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
+import javax.ws.rs.WebApplicationException;
 
 public class AdminFacade {
     private static AdminFacade instance;
@@ -58,6 +59,21 @@ public class AdminFacade {
             em.close();
         }
         return new GuideDTO(guide);
+    }
+
+
+    public void deleteTrip(int id) {
+        EntityManager em = emf.createEntityManager();
+        Trip trip = (em.find(Trip.class, id));
+        if (trip == null)
+            throw new WebApplicationException("Trip with id: " + trip + " doesn't exist");
+        try {
+            em.getTransaction().begin();
+            em.remove(trip);
+            em.getTransaction().commit();
+        } finally {
+            em.close();
+        }
     }
 }
 
