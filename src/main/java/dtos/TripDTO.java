@@ -55,6 +55,7 @@ public class TripDTO implements Serializable {
 
     }
 
+
     public static List<TripDTO> getDtos(List<Trip> rms) {
         List<TripDTO> rmdtos = new ArrayList();
         rms.forEach(rm -> rmdtos.add(new TripDTO(rm)));

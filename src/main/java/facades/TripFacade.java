@@ -12,8 +12,6 @@ public class TripFacade {
     private static TripFacade instance;
     private static EntityManagerFactory emf;
 
-    public TripFacade() {
-    }
 
     public List<TripDTO> getAll() {
         EntityManager em = emf.createEntityManager();
