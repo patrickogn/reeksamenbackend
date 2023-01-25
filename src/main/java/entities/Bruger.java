@@ -10,7 +10,7 @@ import java.util.Set;
 public class Bruger {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "iduser", nullable = false)
+    @Column(name = "idbruger", nullable = false)
     private Integer id;
 
     @Size(max = 45)
@@ -34,10 +34,13 @@ public class Bruger {
     private String gender;
 
     @ManyToMany
-    @JoinTable(name = "user_has_trip",
-            joinColumns = @JoinColumn(name = "user_iduser"),
+    @JoinTable(name = "bruger_has_trip",
+            joinColumns = @JoinColumn(name = "bruger_idbruger"),
             inverseJoinColumns = @JoinColumn(name = "trip_idtrip"))
     private Set<Trip> trips = new LinkedHashSet<>();
+
+/*//    @OneToMany(mappedBy = "brugerIdbruger")
+    private Set<User> users = new LinkedHashSet<>();*/
 
     public Integer getId() {
         return id;
@@ -94,5 +97,13 @@ public class Bruger {
     public void setTrips(Set<Trip> trips) {
         this.trips = trips;
     }
+
+/*    public Set<User> getUsers() {
+        return users;
+    }
+
+    public void setUsers(Set<User> users) {
+        this.users = users;
+    }*/
 
 }

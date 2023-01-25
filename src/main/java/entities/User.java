@@ -10,6 +10,7 @@ import org.mindrot.jbcrypt.BCrypt;
 @Entity
 @Table(name = "users")
 @NamedQuery(name = "User.deleteAllRows", query = "DELETE from User")
+
 public class User implements Serializable {
 
   private static final long serialVersionUID = 1L;
@@ -23,6 +24,8 @@ public class User implements Serializable {
   @Size(min = 1, max = 255)
   @Column(name = "user_pass")
   private String userPass;
+
+
 
 /*  @JoinTable(name = "user_roles", joinColumns = {
           @JoinColumn(name = "user_name", referencedColumnName = "user_name")}, inverseJoinColumns = {

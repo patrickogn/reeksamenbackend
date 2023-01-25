@@ -44,9 +44,9 @@ public class Trip {
     private Set<Guide> guides = new LinkedHashSet<>();
 
     @ManyToMany
-    @JoinTable(name = "user_has_trip",
+    @JoinTable(name = "bruger_has_trip",
             joinColumns = @JoinColumn(name = "trip_idtrip"),
-            inverseJoinColumns = @JoinColumn(name = "user_iduser"))
+            inverseJoinColumns = @JoinColumn(name = "bruger_idbruger"))
     private Set<Bruger> brugers = new LinkedHashSet<>();
 
     public Integer getId() {

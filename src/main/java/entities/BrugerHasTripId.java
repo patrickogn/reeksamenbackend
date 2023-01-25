@@ -7,22 +7,22 @@ import java.io.Serializable;
 import java.util.Objects;
 
 @Embeddable
-public class UserHasTripId implements Serializable {
-    private static final long serialVersionUID = -5731798813186489438L;
+public class BrugerHasTripId implements Serializable {
+    private static final long serialVersionUID = -8138042975427078183L;
     @NotNull
-    @Column(name = "user_iduser", nullable = false)
-    private Integer userIduser;
+    @Column(name = "bruger_idbruger", nullable = false)
+    private Integer brugerIdbruger;
 
     @NotNull
     @Column(name = "trip_idtrip", nullable = false)
     private Integer tripIdtrip;
 
-    public Integer getUserIduser() {
-        return userIduser;
+    public Integer getBrugerIdbruger() {
+        return brugerIdbruger;
     }
 
-    public void setUserIduser(Integer userIduser) {
-        this.userIduser = userIduser;
+    public void setBrugerIdbruger(Integer brugerIdbruger) {
+        this.brugerIdbruger = brugerIdbruger;
     }
 
     public Integer getTripIdtrip() {
@@ -37,14 +37,14 @@ public class UserHasTripId implements Serializable {
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
-        UserHasTripId entity = (UserHasTripId) o;
-        return Objects.equals(this.userIduser, entity.userIduser) &&
-                Objects.equals(this.tripIdtrip, entity.tripIdtrip);
+        BrugerHasTripId entity = (BrugerHasTripId) o;
+        return Objects.equals(this.tripIdtrip, entity.tripIdtrip) &&
+                Objects.equals(this.brugerIdbruger, entity.brugerIdbruger);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(userIduser, tripIdtrip);
+        return Objects.hash(tripIdtrip, brugerIdbruger);
     }
 
 }

@@ -3,35 +3,35 @@ package entities;
 import javax.persistence.*;
 
 @Entity
-@Table(name = "user_has_trip")
-public class UserHasTrip {
+@Table(name = "bruger_has_trip")
+public class BrugerHasTrip {
     @EmbeddedId
-    private UserHasTripId id;
+    private BrugerHasTripId id;
 
-    @MapsId("userIduser")
+    @MapsId("brugerIdbruger")
     @ManyToOne(fetch = FetchType.LAZY, optional = false)
-    @JoinColumn(name = "user_iduser", nullable = false)
-    private Bruger userIduser;
+    @JoinColumn(name = "bruger_idbruger", nullable = false)
+    private Bruger brugerIdbruger;
 
     @MapsId("tripIdtrip")
     @ManyToOne(fetch = FetchType.LAZY, optional = false)
     @JoinColumn(name = "trip_idtrip", nullable = false)
     private Trip tripIdtrip;
 
-    public UserHasTripId getId() {
+    public BrugerHasTripId getId() {
         return id;
     }
 
-    public void setId(UserHasTripId id) {
+    public void setId(BrugerHasTripId id) {
         this.id = id;
     }
 
-    public Bruger getUserIduser() {
-        return userIduser;
+    public Bruger getBrugerIdbruger() {
+        return brugerIdbruger;
     }
 
-    public void setUserIduser(Bruger userIduser) {
-        this.userIduser = userIduser;
+    public void setBrugerIdbruger(Bruger brugerIdbruger) {
+        this.brugerIdbruger = brugerIdbruger;
     }
 
     public Trip getTripIdtrip() {
