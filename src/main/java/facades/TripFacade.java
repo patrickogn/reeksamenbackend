@@ -17,7 +17,7 @@ public class TripFacade {
 
     public List<TripDTO> getAll() {
         EntityManager em = emf.createEntityManager();
-        TypedQuery<Trip> query = em.createQuery("SELECT p FROM Trip p", Trip.class);
+        TypedQuery<Trip> query = em.createQuery("SELECT t FROM Trip t", Trip.class);
         List<Trip> rms = query.getResultList();
         return TripDTO.getDtos(rms);
     }

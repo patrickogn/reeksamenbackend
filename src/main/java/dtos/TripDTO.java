@@ -1,6 +1,5 @@
 package dtos;
 
-import entities.Bruger;
 import entities.Guide;
 import entities.Trip;
 
@@ -28,8 +27,8 @@ public class TripDTO implements Serializable {
     private final String duration;
     @Size(max = 45)
     private final String packinglist;
- /*   private final Set<GuideDTO> guides;
-    private final Set<BrugerDTO> brugers;*/
+    private final List<GuideInnerDTO> guides = new ArrayList<>();
+    private final List<BrugerInnerDTO> brugers = new ArrayList<>();
 
 
     public TripDTO(Integer id, String name, String date, String time, String location, String duration, String packinglist) {
@@ -40,8 +39,6 @@ public class TripDTO implements Serializable {
         this.location = location;
         this.duration = duration;
         this.packinglist = packinglist;
-/*        this.guides = guides;
-        this.brugers = brugers;*/
     }
 
     public TripDTO(Trip rm) {
@@ -52,6 +49,9 @@ public class TripDTO implements Serializable {
         this.location = rm.getLocation();
         this.duration = rm.getDuration();
         this.packinglist = rm.getPackinglist();
+        rm.getGuides().forEach(guide -> {
+            guides.add(new GuideInnerDTO(guide));
+        });
 
     }
 
@@ -90,13 +90,13 @@ public class TripDTO implements Serializable {
         return packinglist;
     }
 
-/*    public Set<GuideDTO> getGuides() {
+    public List<GuideInnerDTO> getGuides() {
         return guides;
     }
 
-    public Set<BrugerDTO> getBrugers() {
+    public List<BrugerInnerDTO> getBrugers() {
         return brugers;
-    }*/
+    }
 
     @Override
     public boolean equals(Object o) {
@@ -118,7 +118,7 @@ public class TripDTO implements Serializable {
     /**
      * A DTO for the {@link Guide} entity
      */
-    public static class GuideDTO implements Serializable {
+    public static class GuideInnerDTO implements Serializable {
         private final Integer id;
         @Size(max = 45)
         private final String name;
@@ -131,13 +131,22 @@ public class TripDTO implements Serializable {
         @Size(max = 45)
         private final String imageurl;
 
-        public GuideDTO(Integer id, String name, String gender, String birthyear, String profile, String imageurl) {
+        public GuideInnerDTO(Integer id, String name, String gender, String birthyear, String profile, String imageurl) {
             this.id = id;
             this.name = name;
             this.gender = gender;
             this.birthyear = birthyear;
             this.profile = profile;
             this.imageurl = imageurl;
+        }
+
+        public GuideInnerDTO(Guide guide) {
+            this.id = guide.getId();
+            this.name = guide.getName();
+            this.gender = guide.getGender();
+            this.birthyear = guide.getBirthyear();
+            this.profile = guide.getProfile();
+            this.imageurl = guide.getImageurl();
         }
 
         public Integer getId() {
@@ -168,7 +177,7 @@ public class TripDTO implements Serializable {
         public boolean equals(Object o) {
             if (this == o) return true;
             if (o == null || getClass() != o.getClass()) return false;
-            GuideDTO entity = (GuideDTO) o;
+            GuideInnerDTO entity = (GuideInnerDTO) o;
             return Objects.equals(this.id, entity.id) &&
                     Objects.equals(this.name, entity.name) &&
                     Objects.equals(this.gender, entity.gender) &&
@@ -197,7 +206,7 @@ public class TripDTO implements Serializable {
     /**
      * A DTO for the {@link Bruger} entity
      */
-    public static class BrugerDTO implements Serializable {
+    public static class BrugerInnerDTO implements Serializable {
         private final Integer id;
         @Size(max = 45)
         private final String adress;
@@ -210,7 +219,7 @@ public class TripDTO implements Serializable {
         @Size(max = 45)
         private final String gender;
 
-        public BrugerDTO(Integer id, String adress, String phone, String email, String birthyear, String gender) {
+        public BrugerInnerDTO(Integer id, String adress, String phone, String email, String birthyear, String gender) {
             this.id = id;
             this.adress = adress;
             this.phone = phone;
@@ -247,7 +256,7 @@ public class TripDTO implements Serializable {
         public boolean equals(Object o) {
             if (this == o) return true;
             if (o == null || getClass() != o.getClass()) return false;
-            BrugerDTO entity = (BrugerDTO) o;
+            BrugerInnerDTO entity = (BrugerInnerDTO) o;
             return Objects.equals(this.id, entity.id) &&
                     Objects.equals(this.adress, entity.adress) &&
                     Objects.equals(this.phone, entity.phone) &&

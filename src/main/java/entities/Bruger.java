@@ -39,9 +39,6 @@ public class Bruger {
             inverseJoinColumns = @JoinColumn(name = "trip_idtrip"))
     private Set<Trip> trips = new LinkedHashSet<>();
 
-/*//    @OneToMany(mappedBy = "brugerIdbruger")
-    private Set<User> users = new LinkedHashSet<>();*/
-
     public Integer getId() {
         return id;
     }
@@ -97,13 +94,5 @@ public class Bruger {
     public void setTrips(Set<Trip> trips) {
         this.trips = trips;
     }
-
-/*    public Set<User> getUsers() {
-        return users;
-    }
-
-    public void setUsers(Set<User> users) {
-        this.users = users;
-    }*/
 
 }

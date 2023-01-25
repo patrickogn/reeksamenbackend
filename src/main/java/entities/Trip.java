@@ -7,6 +7,7 @@ import java.util.Set;
 
 @Entity
 @Table(name = "trip")
+@NamedQuery(name = "Trip.deleteAllRows", query = "DELETE from Trip")
 public class Trip {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -37,9 +38,6 @@ public class Trip {
     @Column(name = "packinglist", length = 45)
     private String packinglist;
 
-    public Trip() {
-    }
-
     @ManyToMany
     @JoinTable(name = "trip_has_guide",
             joinColumns = @JoinColumn(name = "trip_idtrip"),
@@ -51,6 +49,18 @@ public class Trip {
             joinColumns = @JoinColumn(name = "trip_idtrip"),
             inverseJoinColumns = @JoinColumn(name = "bruger_idbruger"))
     private Set<Bruger> brugers = new LinkedHashSet<>();
+
+    public Trip(String name, String date, String time, String location, String duration, String packinglist) {
+        this.name = name;
+        this.date = date;
+        this.time = time;
+        this.location = location;
+        this.duration = duration;
+        this.packinglist = packinglist;
+    }
+
+    public Trip() {
+    }
 
     public Integer getId() {
         return id;
