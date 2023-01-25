@@ -39,6 +39,18 @@ public class Guide {
             inverseJoinColumns = @JoinColumn(name = "trip_idtrip"))
     private Set<Trip> trips = new LinkedHashSet<>();
 
+    public Guide() {
+    }
+
+    public Guide(String name, String gender, String birthyear, String profile, String imageurl) {
+
+        this.name = name;
+        this.gender = gender;
+        this.birthyear = birthyear;
+        this.profile = profile;
+        this.imageurl = imageurl;
+    }
+
     public Integer getId() {
         return id;
     }
