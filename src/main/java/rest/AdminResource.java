@@ -4,6 +4,7 @@ import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import dtos.GuideDTO;
 import dtos.TripDTO;
+import entities.TripHasGuide;
 import facades.AdminFacade;
 import utils.EMF_Creator;
 
@@ -46,6 +47,19 @@ public class AdminResource {
         GuideDTO newGuide = FACADE.createGuide(guideDTO);
         return GSON.toJson(newGuide);
     }
+
+/*    @PUT
+    @Path("edittripguide/{id}")
+    @Produces({MediaType.APPLICATION_JSON})
+    @Consumes({MediaType.APPLICATION_JSON})
+    //@RolesAllowed("admin")
+    public Response updateTripGuide(@PathParam("id") int id, String a) {
+        TripHasGuide tripDTO = GSON.fromJson(a, TripDTO.class);
+        TripDTO.setId();
+        ProjectHoursDTO result = FACADE.updateProjectHours(projectHoursDTO);
+        return Response.ok().entity(GSON.toJson(result)).build();
+    }*/
+
 
     @DELETE
     @Path("deletetrip/{id}")

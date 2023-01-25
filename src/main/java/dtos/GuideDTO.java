@@ -37,7 +37,7 @@ public class GuideDTO implements Serializable {
     public GuideDTO(Guide guide) {
         this.id = guide.getId();
         this.name = guide.getName();
-        this.gender = guide.getName();
+        this.gender = guide.getGender();
         this.birthyear = guide.getBirthyear();
         this.profile = guide.getProfile();
         this.imageurl = guide.getImageurl();
