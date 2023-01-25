@@ -8,6 +8,7 @@ import entities.TripHasGuide;
 import facades.AdminFacade;
 import utils.EMF_Creator;
 
+import javax.annotation.security.RolesAllowed;
 import javax.persistence.EntityManagerFactory;
 import javax.ws.rs.*;
 import javax.ws.rs.core.MediaType;
@@ -30,7 +31,7 @@ public class AdminResource {
     @Path("createtrip")
     @Produces({MediaType.APPLICATION_JSON})
     @Consumes ({MediaType.APPLICATION_JSON})
-    //@RolesAllowed("admin")
+    @RolesAllowed("admin")
     public String createTrip(String input) {
         TripDTO tripDTO = GSON.fromJson(input, TripDTO.class);
         TripDTO newTrip = FACADE.createTrip(tripDTO);
@@ -41,7 +42,7 @@ public class AdminResource {
     @Path("createguide")
     @Produces({MediaType.APPLICATION_JSON})
     @Consumes ({MediaType.APPLICATION_JSON})
-    //@RolesAllowed("admin")
+    @RolesAllowed("admin")
     public String createGuide(String input) {
         GuideDTO guideDTO = GSON.fromJson(input, GuideDTO.class);
         GuideDTO newGuide = FACADE.createGuide(guideDTO);
@@ -65,7 +66,7 @@ public class AdminResource {
     @Path("deletetrip/{id}")
     @Produces({MediaType.APPLICATION_JSON})
     @Consumes({MediaType.APPLICATION_JSON})
-    // @RolesAllowed("admin")
+    @RolesAllowed("admin")
     public Response deleteTrip(@PathParam("id") int id) {
         FACADE.deleteTrip(id);
         return Response.ok().entity(GSON.toJson(id)).build();
