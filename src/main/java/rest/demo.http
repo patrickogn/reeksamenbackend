@@ -35,6 +35,11 @@ Content-Type: application/json
   "userPass": "test123"
 }
 
+
+### Get all trips
+GET http://localhost:8080/reeksamen/api/trip/all
+
+
 ### create new trip
 POST http://localhost:8080/reeksamen/api/admin/createtrip
 Content-Type: application/json
