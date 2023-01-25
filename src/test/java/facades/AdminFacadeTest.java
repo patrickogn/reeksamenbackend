@@ -12,6 +12,8 @@ import utils.EMF_Creator;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 
+import java.util.List;
+
 import static org.junit.jupiter.api.Assertions.*;
 
 class AdminFacadeTest {
@@ -71,5 +73,27 @@ class AdminFacadeTest {
         GuideDTO newGuide = facade.createGuide(guideDTO);
         assertNotNull(newGuide.getId());
         assertEquals(3, guidefacade.getAll().size());
+    }
+    @Test
+    void deleteTrip()
+    {
+        int t1Id = t1.getId();
+        int t2Id = t2.getId();
+        facade.deleteTrip(t1Id);
+        EntityManager em = emf.createEntityManager();
+        try {
+            List<Trip> tripList = em.createQuery("select t from Trip t").getResultList();
+            assertEquals(1, tripList.size(), "Expects 1 Trips in the DB");
+
+            tripList = em.createQuery("select t from Trip t WHERE t.id = " + t1Id).getResultList();
+            assertEquals(0, tripList.size(), "Expects 1 persons in the DB");
+            Trip t = em.find(Trip.class, t1Id);
+            assertNull(t, "Expects that trip is removed and t is null");
+
+            t = em.find(Trip.class, t2Id);
+            assertNotNull(t, "Expects that trip is removed and t is null");
+        } finally {
+            em.close();
+        }
     }
 }

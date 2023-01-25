@@ -45,7 +45,7 @@ Content-Type: application/json
   "time": "10:00",
   "location": "mountain",
   "duration": "10",
-  "packingList": "rygsæk, vandresko"
+  "packinglist": "rygsæk, vandresko"
 }
 
 ### create new guide
@@ -61,7 +61,7 @@ Content-Type: application/json
 }
 
 ### Delete Trip by id
-DELETE http://localhost:8080/reeksamen/api/admin/deletetrip/3
+DELETE http://localhost:8080/reeksamen/api/admin/deletetrip/4
 Content-Type: application/json
 
 ### access as an user
