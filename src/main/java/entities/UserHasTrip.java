@@ -11,7 +11,7 @@ public class UserHasTrip {
     @MapsId("userIduser")
     @ManyToOne(fetch = FetchType.LAZY, optional = false)
     @JoinColumn(name = "user_iduser", nullable = false)
-    private User userIduser;
+    private Bruger userIduser;
 
     @MapsId("tripIdtrip")
     @ManyToOne(fetch = FetchType.LAZY, optional = false)
@@ -26,11 +26,11 @@ public class UserHasTrip {
         this.id = id;
     }
 
-    public User getUserIduser() {
+    public Bruger getUserIduser() {
         return userIduser;
     }
 
-    public void setUserIduser(User userIduser) {
+    public void setUserIduser(Bruger userIduser) {
         this.userIduser = userIduser;
     }
 

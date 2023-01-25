@@ -47,7 +47,7 @@ public class Trip {
     @JoinTable(name = "user_has_trip",
             joinColumns = @JoinColumn(name = "trip_idtrip"),
             inverseJoinColumns = @JoinColumn(name = "user_iduser"))
-    private Set<User> users = new LinkedHashSet<>();
+    private Set<Bruger> brugers = new LinkedHashSet<>();
 
     public Integer getId() {
         return id;
@@ -113,12 +113,12 @@ public class Trip {
         this.guides = guides;
     }
 
-    public Set<User> getUsers() {
-        return users;
+    public Set<Bruger> getBrugers() {
+        return brugers;
     }
 
-    public void setUsers(Set<User> users) {
-        this.users = users;
+    public void setBrugers(Set<Bruger> brugers) {
+        this.brugers = brugers;
     }
 
 }
